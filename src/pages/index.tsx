@@ -12,7 +12,7 @@ interface HomeProductProps {
     id: string;
     imageUrl: string;
     name: string;
-    price: number;
+    price: string;
   }[]
 }
 
@@ -62,11 +62,11 @@ export default function Home({ products }: HomeProductProps) {
 usar apenas para informações que necessitam estar na página para os crowlers e bots*/
 
 /*getStaticProps faz com que a página apenas carregue todo seu conteúdo uma vez,
-até dar o tempo do revalidate e um usuário acessa-lo para refaer a pagina para os próximos acessos
-utilizar apenas para páginas que são exibidas igualmete a todos os usuários*/
+até dar o tempo do revalidate e um usuário acessa-lo para refazer a pagina para os próximos acessos
+utilizar apenas para páginas que são exibidas igualmente a todos os usuários*/
 export const getStaticProps: GetStaticProps = async () => {
 
-  // await new Promise((resolve) => setTimeout(resolve, 2000))
+  // await new Promise(resolve => setTimeout(resolve, 2000))
 
   const response = await stripe.products.list({
     expand: ['data.default_price']
